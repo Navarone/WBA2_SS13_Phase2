@@ -1,0 +1,27 @@
+Schnäppchen-News App
+
+
+Problemstellung
+
+Es ist absehbar, dass in naher Zukunft ein vorhandenes Gerät erneuert oder
+ausgetauscht werden muss, ein Vertrag ausläuft, eine Reise gebucht werden
+möchte oder eine Neuanschaffung geplant ist.
+
+
+Zielsetzung
+
+Eine für den Benutzer orientierte Schnäppchen-News App soll den potentiellen
+Käufer auf ihn zutreffende Benachrichtigungen zusenden.
+
+
+Umsetzung
+
+Für den Benutzer interessante Kategorien können ausgewählt werden, für diese
+dann eine Push-Benachrichtigung gesendet wird, sobald neue Schnäppchen
+verfügbar sind.(asynchron)
+Öffnet man die App, werden alle Schnäppchen angezeigt. Diese sind nach 
+Aktualität sortiert. Kategorien sind zusätzlich auswählbar.(synchron)
+Benutzer haben die Möglichkeit Schnäppchen zu melden, die dann in der App
+veröffentlicht werden, sobald diese von den Administratoren geprüft werden.
+(synchron)
+

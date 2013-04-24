@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schnaeppchenxyz>
+	<Schnaeppchen>
+		<Titel></Titel>
+		<Kategorie></Kategorie>
+		<Bild></Bild>
+		<Preise Währung="Euro">
+			<Preis>180</Preis>
+			<uvp>230</uvp>
+		</Preise>
+		<Text></Text>
+		<Datum>
+			<Tag></Tag>
+			<Uhrzeit></Uhrzeit>
+		</Datum>
+		<Kommentare>
+			<Kommentar Autor="" Datum="" Uhrzeit="" >
+				<Text>Hallo</Text>
+			</Kommentar>
+		</Kommentare>
+	</Schnaeppchen>
+</Schnaeppchenxyz>

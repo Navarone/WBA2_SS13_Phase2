@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:SchaeppchenMelden xmlns:tns="http://www.example.org/SchnaeppchenMelden" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/SchnaeppchenMelden SchnaeppchenMelden.xsd ">
+  <tns:Name>tns:Name</tns:Name>
+  <tns:EMail>tns:EMail</tns:EMail>
+  <tns:Betreff>tns:Betreff</tns:Betreff>
+  <tns:Nachricht>tns:Nachricht</tns:Nachricht>
+</tns:SchaeppchenMelden>

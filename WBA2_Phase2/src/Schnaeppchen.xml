@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Schnaeppchenxyz xmlns:tns="http://www.example.org/Schnaeppchen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/Schnaeppchen Schnaeppchen.xsd ">
+  <tns:Schnaeppchen>
+    <tns:Titel>tns:Titel</tns:Titel>
+    <tns:Kategorie>Kategorie1</tns:Kategorie>
+    <tns:Preise>
+      <tns:Preis>tns:Preis</tns:Preis>
+    </tns:Preise>
+    <tns:Text>tns:Text</tns:Text>
+    <tns:Datum>
+      <tns:Tag>2001-01-01</tns:Tag>
+      <tns:Uhrzeit>12:00:00</tns:Uhrzeit>
+    </tns:Datum>
+  </tns:Schnaeppchen>
+</tns:Schnaeppchenxyz>

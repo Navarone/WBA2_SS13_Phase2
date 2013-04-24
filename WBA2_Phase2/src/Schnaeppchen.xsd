@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Schnaeppchen" xmlns:tns="http://www.example.org/Schnaeppchen" elementFormDefault="qualified">
+	<xs:element name="Schnaeppchenxyz">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Schnaeppchen" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Titel" type="xs:string" />
+							<xs:element name="Kategorie">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="Kategorie1"/>
+										<xs:enumeration value="Kategorie2"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Bild" type="xs:anyURI" minOccurs="0"/>
+							<xs:element name="Preise">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Preis" type="xs:string"/>
+										<xs:element name="UVP" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+									<xs:attribute name="Waehrung">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="Euro"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Text" type="xs:string"/>
+							<xs:element name="Datum">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Tag" type="xs:date"/>
+										<xs:element name="Uhrzeit" type="xs:time"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Kommentare" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Kommentar" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Text" type="xs:string"/>
+												</xs:sequence>
+												<xs:attribute name="Autor" type="xs:string"/>
+												<xs:attribute name="Datum" type="xs:date"/>
+												<xs:attribute name="Uhrzeit" type="xs:time"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

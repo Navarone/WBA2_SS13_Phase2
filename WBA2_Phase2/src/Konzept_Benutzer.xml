@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Benutzerprofile>
+	<Benutzer>
+		<Id></Id>
+		<Benutzernamen></Benutzernamen>
+		<Passwort></Passwort>
+		<Name></Name>
+		<Vorname></Vorname>
+		<E-Mail></E-Mail>
+		<Anmeldedatum></Anmeldedatum>
+		<Adresse>
+			<Strasse></Strasse>
+			<Hausnummer></Hausnummer>
+			<PLZ></PLZ>
+			<Ort></Ort>
+		</Adresse>
+		<AnzahlSchnaeppchen></AnzahlSchnaeppchen>
+		<GemeldeteSchnaeppchen>
+			<Schnaeppchen></Schnaeppchen>
+			<Schnaeppchen></Schnaeppchen>
+		</GemeldeteSchnaeppchen>
+		<Bewertung></Bewertung>
+	</Benutzer>
+</Benutzerprofile>

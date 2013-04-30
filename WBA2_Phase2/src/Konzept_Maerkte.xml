@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Maerkte>
+	<Kette>
+		<Name>Media Markt</Name>
+		<Markt>
+			<Id></Id>
+			<Adresse>
+				<Strasse></Strasse>
+				<Hausnummer></Hausnummer>
+				<PLZ></PLZ>
+				<Ort></Ort>
+			</Adresse>
+			<Schnaeppchenxyz>
+				<Schnaeppchen></Schnaeppchen>
+				<Schnaeppchen></Schnaeppchen>
+			</Schnaeppchenxyz>
+		</Markt>
+	</Kette>
+</Maerkte>

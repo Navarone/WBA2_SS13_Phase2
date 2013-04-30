@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Schnaeppchenxyz>
 	<Schnaeppchen>
+		<Id></Id>
 		<Titel></Titel>
+		<Benutzer></Benutzer>
 		<Kategorie></Kategorie>
 		<Bild></Bild>
+		<Markt></Markt>
 		<Preise Währung="Euro">
 			<Preis>180</Preis>
 			<uvp>230</uvp>

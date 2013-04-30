@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tns:Schnaeppchenxyz xmlns:tns="http://www.example.org/Schnaeppchen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/Schnaeppchen Schnaeppchen.xsd ">
   <tns:Schnaeppchen>
-    <tns:Titel>tns:Titel</tns:Titel>
-    <tns:Kategorie>Kategorie1</tns:Kategorie>
-    <tns:Preise>
-      <tns:Preis>tns:Preis</tns:Preis>
+    <tns:ID>1</tns:ID>
+    <tns:Titel>Fernseher</tns:Titel>
+    <tns:Benutzer>3</tns:Benutzer>
+    <tns:Kategorie>Elektronik</tns:Kategorie>
+    <tns:Bild>http://blog.prinz.de/grand-prix/files/fernseher.jpg</tns:Bild>
+    <tns:Markt>2</tns:Markt>
+    <tns:Markt>21</tns:Markt>
+    <tns:Preise Waehrung="Euro">
+      <tns:Preis>599</tns:Preis>
+      <tns:UVP>999</tns:UVP>
     </tns:Preise>
-    <tns:Text>tns:Text</tns:Text>
+    <tns:Text>Super Fernseher zum Super Preis. Jetzt bei Aldi!</tns:Text>
     <tns:Datum>
-      <tns:Tag>2001-01-01</tns:Tag>
-      <tns:Uhrzeit>12:00:00</tns:Uhrzeit>
+      <tns:Tag>2013-04-30</tns:Tag>
+      <tns:Uhrzeit>21:44:00</tns:Uhrzeit>
     </tns:Datum>
+    <tns:Kommentare>
+    	<tns:Kommentar Autor="Marvin" Datum="2013-04-30" Uhrzeit="22:14:00">
+    		<tns:Text>Super Angebot!</tns:Text>
+    	</tns:Kommentar>
+    	<tns:Kommentar Autor="Kevin" Datum="2013-04-30" Uhrzeit="22:23:00">
+    		<tns:Text>Morgen gleich hinfahren und kaufen!</tns:Text>
+    	</tns:Kommentar>
+    </tns:Kommentare>
+  </tns:Schnaeppchen>
+  
+  <tns:Schnaeppchen>
+    <tns:ID>2</tns:ID>
+    <tns:Titel>Laptop</tns:Titel>
+    <tns:Benutzer>2</tns:Benutzer>
+    <tns:Kategorie>Elektronik</tns:Kategorie>
+    <tns:Bild>http://www.digitaltrends.com/wp-content/uploads/2012/10/samsung-series-5-ultra-touch.jpeg</tns:Bild>
+    <tns:Markt>1</tns:Markt>
+    <tns:Preise Waehrung="Euro">
+      <tns:Preis>899</tns:Preis>
+      <tns:UVP>1399</tns:UVP>
+    </tns:Preise>
+    <tns:Text>Super Laptop zum Super Preis. Jetzt bei Amazon!</tns:Text>
+    <tns:Datum>
+      <tns:Tag>2013-05-01</tns:Tag>
+      <tns:Uhrzeit>14:13:00</tns:Uhrzeit>
+    </tns:Datum>
+    <tns:Kommentare>
+    	<tns:Kommentar Autor="Fritz" Datum="2013-05-01" Uhrzeit="15:24:00">
+    		<tns:Text>Echt Guenstig!</tns:Text>
+    	</tns:Kommentar>
+    	<tns:Kommentar Autor="Mario" Datum="2013-05-01" Uhrzeit="17:11:00">
+    		<tns:Text>Direkt bestellt!</tns:Text>
+    	</tns:Kommentar>
+    </tns:Kommentare>
   </tns:Schnaeppchen>
 </tns:Schnaeppchenxyz>

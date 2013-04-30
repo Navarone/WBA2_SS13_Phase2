@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Maerkte xmlns:tns="http://www.example.org/Maerkte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/Maerkte Maerkte.xsd ">
+  <tns:Kette>
+    <tns:Name>Aldi</tns:Name>
+    <tns:Markt>
+      <tns:Id>2</tns:Id>
+      <tns:Adresse>
+        <tns:Strasse>Holzweg</tns:Strasse>
+        <tns:Hausnummer>26</tns:Hausnummer>
+        <tns:PLZ>51702</tns:PLZ>
+        <tns:Ort>Bergneustadt</tns:Ort>
+      </tns:Adresse>
+      <tns:Schnaeppchenxyz>
+        <tns:Schnaeppchen>2</tns:Schnaeppchen>
+        <tns:Schnaeppchen>126</tns:Schnaeppchen>
+        <tns:Schnaeppchen>345</tns:Schnaeppchen>
+      </tns:Schnaeppchenxyz>
+    </tns:Markt>
+    <tns:Markt>
+      <tns:Id>21</tns:Id>
+      <tns:Adresse>
+        <tns:Strasse>Steinstrasse</tns:Strasse>
+        <tns:Hausnummer>11</tns:Hausnummer>
+        <tns:PLZ>51643</tns:PLZ>
+        <tns:Ort>Gummersbach</tns:Ort>
+      </tns:Adresse>
+      <tns:Schnaeppchenxyz>
+        <tns:Schnaeppchen>2</tns:Schnaeppchen>
+        <tns:Schnaeppchen>15</tns:Schnaeppchen>
+      </tns:Schnaeppchenxyz>
+    </tns:Markt>
+  </tns:Kette>
+  
+  <tns:Kette>
+  	<tns:Name>Amazon</tns:Name>
+  	<tns:Markt>
+  		<tns:Id>1</tns:Id>
+  		<tns:Schnaeppchenxyz>
+  			<tns:Schnaeppchen>2</tns:Schnaeppchen>
+  		</tns:Schnaeppchenxyz>
+  	</tns:Markt>
+  </tns:Kette>
+</tns:Maerkte>

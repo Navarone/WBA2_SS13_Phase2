@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Benutzer" xmlns:tns="http://www.example.org/Benutzer" elementFormDefault="qualified">
+	<xs:element name="Benutzerprofile">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Benutzer" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Id" type="xs:int"/>
+							<xs:element name="Benutzername" type="xs:string"/>
+							<xs:element name="Passwort" type="xs:string"/>
+							<xs:element name="Name" type="xs:string"/>
+							<xs:element name="Vorname" type="xs:string"/>
+							<xs:element name="EMail">
+								<xs:simpleType>
+    								<xs:restriction base="xs:string">
+       									<xs:pattern value="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"/>
+   									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Anmeldedatum" type="xs:date"/>
+							<xs:element name="Adresse">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Strasse" type="xs:string"/>
+										<xs:element name="Hausnummer" type="xs:int"/>
+										<xs:element name="PLZ" type="xs:int"/>
+										<xs:element name="Ort" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AnzahlSchnaeppchen" type="xs:int"/>
+							<xs:element name="GemeldeteSchnaeppchen">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Schnaeppchen" type="xs:int" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Bewertung" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

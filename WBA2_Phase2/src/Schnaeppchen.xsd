@@ -6,16 +6,19 @@
 				<xs:element name="Schnaeppchen" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
+							<xs:element name="ID" type="xs:int"/>
 							<xs:element name="Titel" type="xs:string" />
+							<xs:element name="Benutzer" type="xs:int"/>
 							<xs:element name="Kategorie">
 								<xs:simpleType>
 									<xs:restriction base="xs:string">
-										<xs:enumeration value="Kategorie1"/>
+										<xs:enumeration value="Elektronik"/>
 										<xs:enumeration value="Kategorie2"/>
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
 							<xs:element name="Bild" type="xs:anyURI" minOccurs="0"/>
+							<xs:element name="Markt" type="xs:int" maxOccurs="unbounded"/>
 							<xs:element name="Preise">
 								<xs:complexType>
 									<xs:sequence>

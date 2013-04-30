@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Maerkte" xmlns:tns="http://www.example.org/Maerkte" elementFormDefault="qualified">
+	<xs:element name="Maerkte">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Kette" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Name" type="xs:string"/>
+							<xs:element name="Markt" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Id" type="xs:int"/>
+										<xs:element name="Adresse" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Strasse" type="xs:string"/>
+													<xs:element name="Hausnummer" type="xs:int"/>
+													<xs:element name="PLZ" type="xs:int"/>
+													<xs:element name="Ort" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Schnaeppchenxyz">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Schnaeppchen" type="xs:int" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

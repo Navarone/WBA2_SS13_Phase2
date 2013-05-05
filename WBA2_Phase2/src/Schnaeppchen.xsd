@@ -18,6 +18,7 @@
 								</xs:simpleType>
 							</xs:element>
 							<xs:element name="Bild" type="xs:anyURI" minOccurs="0"/>
+							<xs:element name="URL" type="xs:anyURI" minOccurs="0"/>
 							<xs:element name="Markt" type="xs:int" maxOccurs="unbounded"/>
 							<xs:element name="Preise">
 								<xs:complexType>

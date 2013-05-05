@@ -33,6 +33,7 @@
     <tns:Benutzer>2</tns:Benutzer>
     <tns:Kategorie>Elektronik</tns:Kategorie>
     <tns:Bild>http://www.digitaltrends.com/wp-content/uploads/2012/10/samsung-series-5-ultra-touch.jpeg</tns:Bild>
+    <tns:URL>http://www.amazon.de</tns:URL>
     <tns:Markt>1</tns:Markt>
     <tns:Preise Waehrung="Euro">
       <tns:Preis>899</tns:Preis>

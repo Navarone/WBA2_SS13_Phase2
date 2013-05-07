@@ -6,7 +6,7 @@
 //
 
 
-package org.example.schnaeppchen;
+package schnaeppchen;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

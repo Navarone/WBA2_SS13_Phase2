@@ -6,7 +6,7 @@
 //
 
 
-package org.example.benutzer;
+package benutzer;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

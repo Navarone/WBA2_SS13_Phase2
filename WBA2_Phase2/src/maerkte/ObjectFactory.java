@@ -6,7 +6,7 @@
 //
 
 
-package org.example.maerkte;
+package maerkte;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

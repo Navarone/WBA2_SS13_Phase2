@@ -6,7 +6,7 @@
 //
 
 
-package org.example.maerkte;
+package maerkte;
 
 import java.util.ArrayList;
 import java.util.List;

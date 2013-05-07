@@ -6,7 +6,7 @@
 //
 
 
-package org.example.schnaeppchen;
+package schnaeppchen;
 
 import java.util.ArrayList;
 import java.util.List;

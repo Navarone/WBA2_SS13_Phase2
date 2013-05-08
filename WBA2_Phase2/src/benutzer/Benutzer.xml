@@ -1,46 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tns:Benutzerprofile xmlns:tns="http://www.example.org/Benutzer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/Benutzer Benutzer.xsd ">
-  <tns:Benutzer>
-    <tns:Id>2</tns:Id>
-    <tns:Benutzername>SchnaeppchenJaeger</tns:Benutzername>
-    <tns:Passwort>humbuck156</tns:Passwort>
-    <tns:Name>Mustermann</tns:Name>
-    <tns:Vorname>Max</tns:Vorname>
-    <tns:EMail>Max@Muster.Mann</tns:EMail>
-    <tns:Anmeldedatum>2010-12-12</tns:Anmeldedatum>
-    <tns:Adresse>
-      <tns:Strasse>Holzweg</tns:Strasse>
-      <tns:Hausnummer>1</tns:Hausnummer>
-      <tns:PLZ>51702</tns:PLZ>
-      <tns:Ort>Bergneustadt</tns:Ort>
-    </tns:Adresse>
-    <tns:AnzahlSchnaeppchen>1</tns:AnzahlSchnaeppchen>
-    <tns:GemeldeteSchnaeppchen>
-      <tns:Schnaeppchen>2</tns:Schnaeppchen>
-    </tns:GemeldeteSchnaeppchen>
-    <tns:Bewertung>Neuling</tns:Bewertung>
-  </tns:Benutzer>
-  
-  <tns:Benutzer>
-    <tns:Id>3</tns:Id>
-    <tns:Benutzername>ProfitGeier</tns:Benutzername>
-    <tns:Passwort>123</tns:Passwort>
-    <tns:Name>Schmidt</tns:Name>
-    <tns:Vorname>Kevin</tns:Vorname>
-    <tns:EMail>Kevin@Schmi.dt</tns:EMail>
-    <tns:Anmeldedatum>2012-01-23</tns:Anmeldedatum>
-    <tns:Adresse>
-      <tns:Strasse>Holzweg</tns:Strasse>
-      <tns:Hausnummer>13</tns:Hausnummer>
-      <tns:PLZ>51702</tns:PLZ>
-      <tns:Ort>Bergneustadt</tns:Ort>
-    </tns:Adresse>
-    <tns:AnzahlSchnaeppchen>3</tns:AnzahlSchnaeppchen>
-    <tns:GemeldeteSchnaeppchen>
-      <tns:Schnaeppchen>1</tns:Schnaeppchen>
-      <tns:Schnaeppchen>35</tns:Schnaeppchen>
-      <tns:Schnaeppchen>56</tns:Schnaeppchen>
-    </tns:GemeldeteSchnaeppchen>
-    <tns:Bewertung>Sehr Gut</tns:Bewertung>
-  </tns:Benutzer>
-</tns:Benutzerprofile>
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<Benutzerprofile xmlns="http://www.example.org/Benutzer">
+    <Benutzer>
+        <Id>2</Id>
+        <Benutzername>SchnaeppchenJaeger</Benutzername>
+        <Passwort>humbuck156</Passwort>
+        <Name>Mustermann</Name>
+        <Vorname>Max</Vorname>
+        <EMail>Max@Muster.Mann</EMail>
+        <Anmeldedatum>2010-12-12</Anmeldedatum>
+        <Adresse>
+            <Strasse>Holzweg</Strasse>
+            <Hausnummer>1</Hausnummer>
+            <PLZ>51702</PLZ>
+            <Ort>Bergneustadt</Ort>
+        </Adresse>
+        <AnzahlSchnaeppchen>1</AnzahlSchnaeppchen>
+        <GemeldeteSchnaeppchen>
+            <Schnaeppchen>2</Schnaeppchen>
+        </GemeldeteSchnaeppchen>
+        <Bewertung>Neuling</Bewertung>
+    </Benutzer>
+    <Benutzer>
+        <Id>3</Id>
+        <Benutzername>ProfitGeier</Benutzername>
+        <Passwort>123</Passwort>
+        <Name>Schmidt</Name>
+        <Vorname>Kevin</Vorname>
+        <EMail>Kevin@Schmi.dt</EMail>
+        <Anmeldedatum>2012-01-23</Anmeldedatum>
+        <Adresse>
+            <Strasse>Holzweg</Strasse>
+            <Hausnummer>13</Hausnummer>
+            <PLZ>51702</PLZ>
+            <Ort>Bergneustadt</Ort>
+        </Adresse>
+        <AnzahlSchnaeppchen>3</AnzahlSchnaeppchen>
+        <GemeldeteSchnaeppchen>
+            <Schnaeppchen>1</Schnaeppchen>
+            <Schnaeppchen>35</Schnaeppchen>
+            <Schnaeppchen>56</Schnaeppchen>
+        </GemeldeteSchnaeppchen>
+        <Bewertung>Sehr Gut</Bewertung>
+    </Benutzer>
+</Benutzerprofile>

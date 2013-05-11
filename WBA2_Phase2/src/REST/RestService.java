@@ -24,6 +24,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import schnaeppchen.*;
 import schnaeppchen.Schnaeppchenxyz.Schnaeppchen;
+import schnaeppchen.Schnaeppchenxyz.Schnaeppchen.Datum;
+import schnaeppchen.Schnaeppchenxyz.Schnaeppchen.Kommentare;
+import schnaeppchen.Schnaeppchenxyz.Schnaeppchen.Kommentare.Kommentar;
+import schnaeppchen.Schnaeppchenxyz.Schnaeppchen.Preise;
 import benutzer.*;
 import benutzer.Benutzerprofile.Benutzer;
 import benutzer.Benutzerprofile.Benutzer.Adresse;
@@ -58,7 +62,7 @@ public class RestService
 	   
 	   return schnaeppchen;
    }
-   /*++++++Problem mit Date und Time+++++++
+   
    	@POST
 	@Path("/schnaeppchen")
 	@Produces("application/xml")
@@ -72,33 +76,41 @@ public class RestService
 												@FormParam("Waehrung")String waehrung,
 												@FormParam("UVP")String uvp,
 												@FormParam("Text")String text,
-												@FormParam("Tag")XMLGregorianCalendar tag,
-												@FormParam("Uhrzeit")XMLGregorianCalendar uhrzeit,
+												@FormParam("Tag")String tag,
+												@FormParam("Uhrzeit")String uhrzeit,
 												@FormParam("KAutor")String kautor,
-												@FormParam("KTag")XMLGregorianCalendar ktag,
-												@FormParam("KUhrzeit")XMLGregorianCalendar kuhrzeit,
+												@FormParam("KTag")String ktag,
+												@FormParam("KUhrzeit")String kuhrzeit,
 												@FormParam("KText")String ktext
 											)throws JAXBException, IOException{
    		
    		Schnaeppchenxyz schnaeppchen = new Schnaeppchenxyz();
    		Schnaeppchen s = new Schnaeppchen();
+   		Preise p = new Preise();
+   		Datum d = new Datum();
+   		Kommentare ke = new Kommentare();
+   		Kommentar k = new Kommentar();
    		
    		s.setID(id);
    		s.setTitel(titel);
    		s.setBenutzer(benutzer);
    		s.setKategorie(kategorie);
    		s.setBild(bild);
-   		s.getMarkt().set(0, markt);
-   		s.getPreise().setPreis(preis);
-   		s.getPreise().setUVP(uvp);
-   		s.getPreise().setWaehrung(waehrung);
+   		s.getMarkt().add(markt);
+   		p.setPreis(preis);
+   		p.setUVP(uvp);
+   		p.setWaehrung(waehrung);
+   		s.setPreise(p);
    		s.setText(text);
-   		s.getDatum().setTag(tag);
-   		s.getDatum().setUhrzeit(uhrzeit);
-   		s.getKommentare().getKommentar().get(0).setAutor(kautor);
-   		s.getKommentare().getKommentar().get(0).setDatum(ktag);
-   		s.getKommentare().getKommentar().get(0).setUhrzeit(kuhrzeit);
-   		s.getKommentare().getKommentar().get(0).setText(ktext);
+   		d.setTag(tag);
+   		d.setUhrzeit(uhrzeit);
+   		s.setDatum(d);
+   		k.setAutor(kautor);
+   		k.setDatum(ktag);
+   		k.setUhrzeit(kuhrzeit);
+   		k.setText(ktext);
+   		ke.getKommentar().add(k);
+   		s.setKommentare(ke);
 		
 		schnaeppchen.ObjectFactory ob = new schnaeppchen.ObjectFactory();
 		schnaeppchen = ob.createSchnaeppchenxyz();
@@ -121,7 +133,7 @@ public class RestService
 		
 		return schnaeppchen;
 		
-	}*/
+	}
    
    //Schnaeppchen/{id} 
    

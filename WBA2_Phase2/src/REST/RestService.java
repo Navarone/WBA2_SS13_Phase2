@@ -77,24 +77,22 @@ public class RestService
 		Unmarshaller um = context.createUnmarshaller();
 		schnaeppchen = (Schnaeppchenxyz) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml"));
 		Schnaeppchenxyz rt = ob.createSchnaeppchenxyz();
-		
-		if (i <= schnaeppchen.getSchnaeppchen().size()) {
-			
-			rt.getSchnaeppchen().addAll(schnaeppchen.getSchnaeppchen());
-			rt.getSchnaeppchen().remove(schnaeppchen.getSchnaeppchen().get(i));
-			
-			// Marshall content to XML-File.
-			Marshaller m = context.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
-			m.marshal(rt, System.out);
-			
-			Writer w = null;
-			w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml");
-			m.marshal(rt, w);
-			w.close();
-			return rt;
+					
+		rt.getSchnaeppchen().addAll(schnaeppchen.getSchnaeppchen());
+		for(int j=0; j<schnaeppchen.getSchnaeppchen().size(); j++){
+			if(schnaeppchen.getSchnaeppchen().get(j).getID()==i)
+				rt.getSchnaeppchen().remove(schnaeppchen.getSchnaeppchen().get(j));
 		}
+		// Marshall content to XML-File.
+		Marshaller m = context.createMarshaller();
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
+		m.marshal(rt, System.out);
+		
+		Writer w = null;
+		w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml");
+		m.marshal(rt, w);
+		w.close();
 		return rt;
 	}
    
@@ -149,23 +147,23 @@ public class RestService
 		benutzer = (Benutzerprofile) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml"));
 		Benutzerprofile rt = ob.createBenutzerprofile();
 		
-		if (i <= benutzer.getBenutzer().size()) {
 			
-			rt.getBenutzer().addAll(benutzer.getBenutzer());
-			rt.getBenutzer().remove(benutzer.getBenutzer().get(i));
-			
-			// Marshall content to XML-File.
-			Marshaller m = context.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
-			m.marshal(rt, System.out);
-			
-			Writer w = null;
-			w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml");
-			m.marshal(rt, w);
-			w.close();
-			return rt;
+		rt.getBenutzer().addAll(benutzer.getBenutzer());
+		for(int j=0; j<benutzer.getBenutzer().size(); j++){
+			if(benutzer.getBenutzer().get(j).getId()==i)
+				rt.getBenutzer().remove(benutzer.getBenutzer().get(j));
 		}
+		
+		// Marshall content to XML-File.
+		Marshaller m = context.createMarshaller();
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
+		m.marshal(rt, System.out);
+		
+		Writer w = null;
+		w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml");
+		m.marshal(rt, w);
+		w.close();
 		return rt;
 	}
    

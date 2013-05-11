@@ -63,10 +63,10 @@ public class RestService
 	   return schnaeppchen;
    }
    
-   	@POST
-	@Path("/schnaeppchen")
-	@Produces("application/xml")
-	public Schnaeppchenxyz createSchnaeppchen(	@FormParam("ID")int id,
+   @POST
+   @Path("/schnaeppchen")
+   @Produces("application/xml")
+   public Schnaeppchenxyz createSchnaeppchen(	@FormParam("ID")int id,
 												@FormParam("Titel")String titel,
 												@FormParam("Benutzer")int benutzer,
 												@FormParam("Kategorie")String kategorie,
@@ -83,57 +83,57 @@ public class RestService
 												@FormParam("KUhrzeit")String kuhrzeit,
 												@FormParam("KText")String ktext
 											)throws JAXBException, IOException{
-   		
-   		Schnaeppchenxyz schnaeppchen = new Schnaeppchenxyz();
-   		Schnaeppchen s = new Schnaeppchen();
-   		Preise p = new Preise();
-   		Datum d = new Datum();
-   		Kommentare ke = new Kommentare();
-   		Kommentar k = new Kommentar();
-   		
-   		s.setID(id);
-   		s.setTitel(titel);
-   		s.setBenutzer(benutzer);
-   		s.setKategorie(kategorie);
-   		s.setBild(bild);
-   		s.getMarkt().add(markt);
-   		p.setPreis(preis);
-   		p.setUVP(uvp);
-   		p.setWaehrung(waehrung);
-   		s.setPreise(p);
-   		s.setText(text);
-   		d.setTag(tag);
-   		d.setUhrzeit(uhrzeit);
-   		s.setDatum(d);
-   		k.setAutor(kautor);
-   		k.setDatum(ktag);
-   		k.setUhrzeit(kuhrzeit);
-   		k.setText(ktext);
-   		ke.getKommentar().add(k);
-   		s.setKommentare(ke);
 		
-		schnaeppchen.ObjectFactory ob = new schnaeppchen.ObjectFactory();
-		schnaeppchen = ob.createSchnaeppchenxyz();
-		JAXBContext context = JAXBContext.newInstance(Schnaeppchenxyz.class);
-		Unmarshaller um = context.createUnmarshaller();
-		schnaeppchen = (Schnaeppchenxyz) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml"));
+	   Schnaeppchenxyz schnaeppchen = new Schnaeppchenxyz();
+	   Schnaeppchen s = new Schnaeppchen();
+	   Preise p = new Preise();
+	   Datum d = new Datum();
+	   Kommentare ke = new Kommentare();
+	   Kommentar k = new Kommentar();
 		
-		schnaeppchen.getSchnaeppchen().add(schnaeppchen.getSchnaeppchen().size(), s);
-
+	   s.setID(id);
+	   s.setTitel(titel);
+	   s.setBenutzer(benutzer);
+	   s.setKategorie(kategorie);
+	   s.setBild(bild);
+	   s.getMarkt().add(markt);
+	   p.setPreis(preis);
+	   p.setUVP(uvp);
+	   p.setWaehrung(waehrung);
+	   s.setPreise(p);
+	   s.setText(text);
+	   d.setTag(tag);
+	   d.setUhrzeit(uhrzeit);
+	   s.setDatum(d);
+	   k.setAutor(kautor);
+	   k.setDatum(ktag);
+	   k.setUhrzeit(kuhrzeit);
+	   k.setText(ktext);
+	   ke.getKommentar().add(k);
+	   s.setKommentare(ke);
 		
-		Marshaller m = context.createMarshaller();
-		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
-		m.marshal(schnaeppchen, System.out);
+	   schnaeppchen.ObjectFactory ob = new schnaeppchen.ObjectFactory();
+	   schnaeppchen = ob.createSchnaeppchenxyz();
+	   JAXBContext context = JAXBContext.newInstance(Schnaeppchenxyz.class);
+	   Unmarshaller um = context.createUnmarshaller();
+	   schnaeppchen = (Schnaeppchenxyz) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml"));
 		
-		Writer w = null;
-		w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml");
-		m.marshal(schnaeppchen, w);
-		w.close();
+	   schnaeppchen.getSchnaeppchen().add(schnaeppchen.getSchnaeppchen().size(), s);
+	
 		
-		return schnaeppchen;
+	   Marshaller m = context.createMarshaller();
+	   m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	   m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
+	   m.marshal(schnaeppchen, System.out);
 		
-	}
+	   Writer w = null;
+	   w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml");
+	   m.marshal(schnaeppchen, w);
+	   w.close();
+		
+	   return schnaeppchen;
+		
+   }
    
    //Schnaeppchen/{id} 
    
@@ -156,35 +156,35 @@ public class RestService
 		   return rt;
    }
    
-   	@DELETE
-	@Path("schnaeppchen/{id}")
-	@Produces("application/xml")
-	public Schnaeppchenxyz deleteOneSchnaeppchen(@PathParam("id")int i) throws JAXBException, IOException{
+   @DELETE
+   @Path("schnaeppchen/{id}")
+   @Produces("application/xml")
+   public Schnaeppchenxyz deleteOneSchnaeppchen(@PathParam("id")int i) throws JAXBException, IOException{
 		
-		schnaeppchen.ObjectFactory ob = new schnaeppchen.ObjectFactory();
-		Schnaeppchenxyz schnaeppchen = ob.createSchnaeppchenxyz();
-		JAXBContext context = JAXBContext.newInstance(Schnaeppchenxyz.class);
-		Unmarshaller um = context.createUnmarshaller();
-		schnaeppchen = (Schnaeppchenxyz) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml"));
-		Schnaeppchenxyz rt = ob.createSchnaeppchenxyz();
+	   schnaeppchen.ObjectFactory ob = new schnaeppchen.ObjectFactory();
+	   Schnaeppchenxyz schnaeppchen = ob.createSchnaeppchenxyz();
+	   JAXBContext context = JAXBContext.newInstance(Schnaeppchenxyz.class);
+	   Unmarshaller um = context.createUnmarshaller();
+	   schnaeppchen = (Schnaeppchenxyz) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml"));
+	   Schnaeppchenxyz rt = ob.createSchnaeppchenxyz();
 					
-		rt.getSchnaeppchen().addAll(schnaeppchen.getSchnaeppchen());
-		for(int j=0; j<schnaeppchen.getSchnaeppchen().size(); j++){
-			if(schnaeppchen.getSchnaeppchen().get(j).getID()==i)
-				rt.getSchnaeppchen().remove(schnaeppchen.getSchnaeppchen().get(j));
-		}
-		// Marshall content to XML-File.
-		Marshaller m = context.createMarshaller();
-		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
-		m.marshal(rt, System.out);
+	   rt.getSchnaeppchen().addAll(schnaeppchen.getSchnaeppchen());
+	   for(int j=0; j<schnaeppchen.getSchnaeppchen().size(); j++){
+		   if(schnaeppchen.getSchnaeppchen().get(j).getID()==i)
+			   rt.getSchnaeppchen().remove(schnaeppchen.getSchnaeppchen().get(j));
+	   }
+	   
+	   Marshaller m = context.createMarshaller();
+	   m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	   m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
+	   m.marshal(rt, System.out);
 		
-		Writer w = null;
-		w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml");
-		m.marshal(rt, w);
-		w.close();
-		return rt;
-	}
+	   Writer w = null;
+	   w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml");
+	   m.marshal(rt, w);
+	   w.close();
+	   return rt;
+   }
    
    //Benutzer
    
@@ -202,10 +202,10 @@ public class RestService
 	   return benutzer;
    }
    
-   	@POST
-	@Path("/benutzer")
-	@Produces("application/xml")
-	public Benutzerprofile createSchnaeppchen(	@FormParam("ID")int id,
+   @POST
+   @Path("/benutzer")
+   @Produces("application/xml")
+   public Benutzerprofile createSchnaeppchen(	@FormParam("ID")int id,
 												@FormParam("Benutzername")String benutzername,
 												@FormParam("Passwort")String passwort,
 												@FormParam("Name")String name,
@@ -221,50 +221,49 @@ public class RestService
 												@FormParam("Bewertung")String bewertung
 											)throws JAXBException, IOException, DatatypeConfigurationException{
   		
-  		Benutzerprofile benutzer = new Benutzerprofile();
-  		Benutzer b = new Benutzer();
-  		Adresse a = new Adresse();
-  		GemeldeteSchnaeppchen g = new GemeldeteSchnaeppchen();
+	   Benutzerprofile benutzer = new Benutzerprofile();
+	   Benutzer b = new Benutzer();
+	   Adresse a = new Adresse();
+	   GemeldeteSchnaeppchen g = new GemeldeteSchnaeppchen();
   		
-  		b.setId(id);
-  		b.setBenutzername(benutzername);
-  		b.setPasswort(passwort);
-  		b.setName(name);
-  		b.setVorname(vorname);
-  		b.setEMail(email);
-  		b.setAnmeldedatum(datum);
-  		a.setStrasse(strasse);
-  		a.setHausnummer(hausnummer);
-  		a.setPLZ(plz);
-  		a.setOrt(ort);
-  		b.setAdresse(a);
-  		b.setAnzahlSchnaeppchen(anzschn);
-  		g.getSchnaeppchen().add(gemschn);
-  		b.setGemeldeteSchnaeppchen(g);
-  		b.setBewertung(bewertung);
+	   b.setId(id);
+	   b.setBenutzername(benutzername);
+	   b.setPasswort(passwort);
+	   b.setName(name);
+	   b.setVorname(vorname);
+	   b.setEMail(email);
+	   b.setAnmeldedatum(datum);
+	   a.setStrasse(strasse);
+	   a.setHausnummer(hausnummer);
+	   a.setPLZ(plz);
+	   a.setOrt(ort);
+	   b.setAdresse(a);
+	   b.setAnzahlSchnaeppchen(anzschn);
+	   g.getSchnaeppchen().add(gemschn);
+	   b.setGemeldeteSchnaeppchen(g);
+	   b.setBewertung(bewertung);
   		
-		benutzer.ObjectFactory ob = new benutzer.ObjectFactory();
-		benutzer = ob.createBenutzerprofile();
-		JAXBContext context = JAXBContext.newInstance(Benutzerprofile.class);
-		Unmarshaller um = context.createUnmarshaller();
-		benutzer = (Benutzerprofile) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml"));
+	   benutzer.ObjectFactory ob = new benutzer.ObjectFactory();
+	   benutzer = ob.createBenutzerprofile();
+	   JAXBContext context = JAXBContext.newInstance(Benutzerprofile.class);
+	   Unmarshaller um = context.createUnmarshaller();
+	   benutzer = (Benutzerprofile) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml"));
 		
-		benutzer.getBenutzer().add(benutzer.getBenutzer().size(), b);
+	   benutzer.getBenutzer().add(benutzer.getBenutzer().size(), b);
 
+	   Marshaller m = context.createMarshaller();
+	   m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	   m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
+	   m.marshal(benutzer, System.out);
 		
-		Marshaller m = context.createMarshaller();
-		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
-		m.marshal(benutzer, System.out);
+	   Writer w = null;
+	   w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml");
+	   m.marshal(benutzer, w);
+	   w.close();
 		
-		Writer w = null;
-		w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml");
-		m.marshal(benutzer, w);
-		w.close();
+	   return benutzer;
 		
-		return benutzer;
-		
-	}
+   }
    
    
    //Benutzer/{id}
@@ -281,6 +280,7 @@ public class RestService
 	   Unmarshaller um = context.createUnmarshaller();
 	   benutzer = (Benutzerprofile) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml"));
 	   Benutzerprofile rt = ob.createBenutzerprofile();
+	   
 	   for(int j = 0; j<benutzer.getBenutzer().size(); j++){
 		   if(benutzer.getBenutzer().get(j).getId()==i)
 			   rt.getBenutzer().add(benutzer.getBenutzer().get(j));
@@ -289,37 +289,35 @@ public class RestService
 	   return rt;
    }
    
-   	@DELETE
-	@Path("benutzer/{id}")
-	@Produces("application/xml")
-	public Benutzerprofile deleteOneBenutzer(@PathParam("id")int i) throws JAXBException, IOException{
+   @DELETE
+   @Path("benutzer/{id}")
+   @Produces("application/xml")
+   public Benutzerprofile deleteOneBenutzer(@PathParam("id")int i) throws JAXBException, IOException{
 		
-		benutzer.ObjectFactory ob = new benutzer.ObjectFactory();
-		Benutzerprofile benutzer = ob.createBenutzerprofile();
-		JAXBContext context = JAXBContext.newInstance(Benutzerprofile.class);
-		Unmarshaller um = context.createUnmarshaller();
-		benutzer = (Benutzerprofile) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml"));
-		Benutzerprofile rt = ob.createBenutzerprofile();
-		
+	   benutzer.ObjectFactory ob = new benutzer.ObjectFactory();
+	   Benutzerprofile benutzer = ob.createBenutzerprofile();
+	   JAXBContext context = JAXBContext.newInstance(Benutzerprofile.class);
+	   Unmarshaller um = context.createUnmarshaller();
+	   benutzer = (Benutzerprofile) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml"));
+	   Benutzerprofile rt = ob.createBenutzerprofile();
 			
-		rt.getBenutzer().addAll(benutzer.getBenutzer());
-		for(int j=0; j<benutzer.getBenutzer().size(); j++){
-			if(benutzer.getBenutzer().get(j).getId()==i)
-				rt.getBenutzer().remove(benutzer.getBenutzer().get(j));
-		}
+	   rt.getBenutzer().addAll(benutzer.getBenutzer());
+	   for(int j=0; j<benutzer.getBenutzer().size(); j++){
+		   if(benutzer.getBenutzer().get(j).getId()==i)
+			   rt.getBenutzer().remove(benutzer.getBenutzer().get(j));
+	   }
 		
-		// Marshall content to XML-File.
-		Marshaller m = context.createMarshaller();
-		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
-		m.marshal(rt, System.out);
+	   Marshaller m = context.createMarshaller();
+	   m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	   m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
+	   m.marshal(rt, System.out);
 		
-		Writer w = null;
-		w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml");
-		m.marshal(rt, w);
-		w.close();
-		return rt;
-	}
+	   Writer w = null;
+	   w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/benutzer/Benutzer.xml");
+	   m.marshal(rt, w);
+	   w.close();
+	   return rt;
+   }
    
    
    //Benutzer/{id}/Schnaeppchen

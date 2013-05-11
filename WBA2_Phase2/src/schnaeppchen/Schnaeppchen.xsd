@@ -39,8 +39,8 @@
 							<xs:element name="Datum">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="Tag" type="xs:date"/>
-										<xs:element name="Uhrzeit" type="xs:time"/>
+										<xs:element name="Tag" type="xs:string"/>
+										<xs:element name="Uhrzeit" type="xs:string"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -53,8 +53,8 @@
 													<xs:element name="Text" type="xs:string"/>
 												</xs:sequence>
 												<xs:attribute name="Autor" type="xs:string"/>
-												<xs:attribute name="Datum" type="xs:date"/>
-												<xs:attribute name="Uhrzeit" type="xs:time"/>
+												<xs:attribute name="Datum" type="xs:string"/>
+												<xs:attribute name="Uhrzeit" type="xs:string"/>
 											</xs:complexType>
 										</xs:element>
 									</xs:sequence>

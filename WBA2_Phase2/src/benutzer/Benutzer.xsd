@@ -18,7 +18,7 @@
    									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
-							<xs:element name="Anmeldedatum" type="xs:date"/>
+							<xs:element name="Anmeldedatum" type="xs:string"/>
 							<xs:element name="Adresse">
 								<xs:complexType>
 									<xs:sequence>

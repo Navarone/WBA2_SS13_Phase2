@@ -42,4 +42,24 @@
         </GemeldeteSchnaeppchen>
         <Bewertung>Sehr Gut</Bewertung>
     </Benutzer>
+    <Benutzer>
+        <Id>20</Id>
+        <Benutzername>Panic</Benutzername>
+        <Passwort>pas123</Passwort>
+        <Name>Wolf</Name>
+        <Vorname>Florian</Vorname>
+        <EMail>ich@du.com</EMail>
+        <Anmeldedatum>2012-12-22</Anmeldedatum>
+        <Adresse>
+            <Strasse>Zum Bauckmert</Strasse>
+            <Hausnummer>31</Hausnummer>
+            <PLZ>51702</PLZ>
+            <Ort>Bergneustadt</Ort>
+        </Adresse>
+        <AnzahlSchnaeppchen>1</AnzahlSchnaeppchen>
+        <GemeldeteSchnaeppchen>
+            <Schnaeppchen>5</Schnaeppchen>
+        </GemeldeteSchnaeppchen>
+        <Bewertung>Gut</Bewertung>
+    </Benutzer>
 </Benutzerprofile>

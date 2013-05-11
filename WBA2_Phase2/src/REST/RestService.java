@@ -26,6 +26,8 @@ import schnaeppchen.*;
 import schnaeppchen.Schnaeppchenxyz.Schnaeppchen;
 import benutzer.*;
 import benutzer.Benutzerprofile.Benutzer;
+import benutzer.Benutzerprofile.Benutzer.Adresse;
+import benutzer.Benutzerprofile.Benutzer.GemeldeteSchnaeppchen;
 
 @Path( "/content" )
 public class RestService
@@ -209,7 +211,8 @@ public class RestService
   		
   		Benutzerprofile benutzer = new Benutzerprofile();
   		Benutzer b = new Benutzer();
-  		
+  		Adresse a = new Adresse();
+  		GemeldeteSchnaeppchen g = new GemeldeteSchnaeppchen();
   		
   		b.setId(id);
   		b.setBenutzername(benutzername);
@@ -218,14 +221,16 @@ public class RestService
   		b.setVorname(vorname);
   		b.setEMail(email);
   		b.setAnmeldedatum(datum);
-  		b.getAdresse().setStrasse(strasse);
-  		b.getAdresse().setHausnummer(hausnummer);
-  		b.getAdresse().setPLZ(plz);
-  		b.getAdresse().setOrt(ort);
+  		a.setStrasse(strasse);
+  		a.setHausnummer(hausnummer);
+  		a.setPLZ(plz);
+  		a.setOrt(ort);
+  		b.setAdresse(a);
   		b.setAnzahlSchnaeppchen(anzschn);
-  		b.getGemeldeteSchnaeppchen().getSchnaeppchen().set(0, gemschn);
+  		g.getSchnaeppchen().add(gemschn);
+  		b.setGemeldeteSchnaeppchen(g);
   		b.setBewertung(bewertung);
-		
+  		
 		benutzer.ObjectFactory ob = new benutzer.ObjectFactory();
 		benutzer = ob.createBenutzerprofile();
 		JAXBContext context = JAXBContext.newInstance(Benutzerprofile.class);

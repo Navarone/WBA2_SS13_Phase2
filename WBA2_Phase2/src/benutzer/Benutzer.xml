@@ -59,6 +59,8 @@
         <AnzahlSchnaeppchen>1</AnzahlSchnaeppchen>
         <GemeldeteSchnaeppchen>
             <Schnaeppchen>5</Schnaeppchen>
+            <Schnaeppchen>6</Schnaeppchen>
+            <Schnaeppchen>1</Schnaeppchen>
         </GemeldeteSchnaeppchen>
         <Bewertung>Gut</Bewertung>
     </Benutzer>

@@ -111,6 +111,8 @@ public class RestService
 	   schnaeppchen = (Schnaeppchenxyz) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml"));
 		
 	   schnaeppchen.getSchnaeppchen().add(schnaeppchen.getSchnaeppchen().size(), s);
+	   
+	   PostBenutzerIdSchnaeppchen(benutzer, id);
 	
 		
 	   Marshaller m = context.createMarshaller();
@@ -178,7 +180,7 @@ public class RestService
 	   return rt;
    }
    
-   @POST
+   @PUT
    @Path("/schnaeppchen/{id}")
    @Produces("application/xml")
    public Schnaeppchenxyz PostSchnaeppchenId(	@PathParam("id")int i,
@@ -247,6 +249,53 @@ public class RestService
 		   k.setText(ktext);
 		   schnaeppchen.getSchnaeppchen().get(id).getKommentare().getKommentar().add(ksize, k);
 	   }
+		
+	   Marshaller m = context.createMarshaller();
+	   m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+	   m.setProperty(Marshaller.JAXB_ENCODING, "ISO-8859-1");
+	   m.marshal(schnaeppchen, System.out);
+		
+	   Writer w = null;
+	   w = new FileWriter("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml");
+	   m.marshal(schnaeppchen, w);
+	   w.close();
+		
+	   return schnaeppchen;
+		
+   }
+   
+   @POST
+   @Path("/schnaeppchen/{id}")
+   @Produces("application/xml")
+   public Schnaeppchenxyz newKommentar		(	@PathParam("id")int i,
+												@FormParam("KAutor")String kautor,
+												@FormParam("KTag")String ktag,
+												@FormParam("KUhrzeit")String kuhrzeit,
+												@FormParam("KText")String ktext
+											)throws JAXBException, IOException{
+		
+	   Schnaeppchenxyz schnaeppchen = new Schnaeppchenxyz();
+	   Kommentar k = new Kommentar();
+
+	   schnaeppchen.ObjectFactory ob = new schnaeppchen.ObjectFactory();
+	   schnaeppchen = ob.createSchnaeppchenxyz();
+	   JAXBContext context = JAXBContext.newInstance(Schnaeppchenxyz.class);
+	   Unmarshaller um = context.createUnmarshaller();
+	   schnaeppchen = (Schnaeppchenxyz) um.unmarshal(new FileReader("/Users/FlorianWolf/git/WBA2_SS13_Phase2/WBA2_Phase2/src/schnaeppchen/Schnaeppchen.xml"));	
+	   int id=0;
+	   
+	   for(int j=0; j<schnaeppchen.getSchnaeppchen().size(); j++){
+		   if(schnaeppchen.getSchnaeppchen().get(j).getID()==i){
+			   id=j;
+		   }			   	
+	   }
+	   
+	   int ksize=schnaeppchen.getSchnaeppchen().get(id).getKommentare().getKommentar().size();
+	   k.setAutor(kautor);
+	   k.setDatum(ktag);
+	   k.setUhrzeit(kuhrzeit);
+	   k.setText(ktext);
+	   schnaeppchen.getSchnaeppchen().get(id).getKommentare().getKommentar().add(ksize, k);
 		
 	   Marshaller m = context.createMarshaller();
 	   m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -396,7 +445,7 @@ public class RestService
 	   return rt;
    }
    
-   @POST
+   @PUT
    @Path("/benutzer/{id}")
    @Produces("application/xml")
    public Benutzerprofile PostBenutzerId(		@PathParam("id")int i,
@@ -521,10 +570,14 @@ public class RestService
 			   id=j;
 		   }			   	
 	   }
+	   
+	   int anz=0;
 	  
 	   if(gemschn!=0){
 		   int gemschnsize=benutzer.getBenutzer().get(id).getGemeldeteSchnaeppchen().getSchnaeppchen().size();
 		   benutzer.getBenutzer().get(id).getGemeldeteSchnaeppchen().getSchnaeppchen().add(gemschnsize, gemschn);
+		   anz=benutzer.getBenutzer().get(id).getAnzahlSchnaeppchen()+1;
+		   benutzer.getBenutzer().get(id).setAnzahlSchnaeppchen(anz);
 	   }
 	   
   		

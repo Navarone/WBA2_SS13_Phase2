@@ -14,9 +14,11 @@
             <PLZ>51702</PLZ>
             <Ort>Bergneustadt</Ort>
         </Adresse>
-        <AnzahlSchnaeppchen>1</AnzahlSchnaeppchen>
+        <AnzahlSchnaeppchen>3</AnzahlSchnaeppchen>
         <GemeldeteSchnaeppchen>
             <Schnaeppchen>2</Schnaeppchen>
+            <Schnaeppchen>5</Schnaeppchen>
+            <Schnaeppchen>23</Schnaeppchen>
         </GemeldeteSchnaeppchen>
         <Bewertung>Neuling</Bewertung>
     </Benutzer>

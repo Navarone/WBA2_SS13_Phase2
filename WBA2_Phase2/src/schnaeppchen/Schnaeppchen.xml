@@ -52,4 +52,29 @@
             </Kommentar>
         </Kommentare>
     </Schnaeppchen>
+    <Schnaeppchen>
+        <ID>23</ID>
+        <Titel>Test</Titel>
+        <Benutzer>2</Benutzer>
+        <Kategorie>Elektronik</Kategorie>
+        <Bild>efwe</Bild>
+        <Markt>4</Markt>
+        <Preise Waehrung="Euro">
+            <Preis>234</Preis>
+            <UVP>290</UVP>
+        </Preise>
+        <Text>Schnaeppchen</Text>
+        <Datum>
+            <Tag>24.11.2012</Tag>
+            <Uhrzeit>11:11</Uhrzeit>
+        </Datum>
+        <Kommentare>
+            <Kommentar Autor="ich" Datum="25.11.2012" Uhrzeit="12:23">
+                <Text>Super</Text>
+            </Kommentar>
+            <Kommentar Autor="du" Datum="25.11.2012" Uhrzeit="12:23">
+                <Text>Super duper</Text>
+            </Kommentar>
+        </Kommentare>
+    </Schnaeppchen>
 </Schnaeppchenxyz>

@@ -111,7 +111,15 @@ public class PubSub {
 	public void addMessage(String Id, String nodeName) throws XMPPException {
 		LeafNode node = mgr.getNode(nodeName);
 		node.publish(new Item(Id));
-		System.out.println("Item wurde erzeugt.");
+		System.out.println("Item wurde erzeugt");
+		System.out.println("");
+		
+	}
+	
+	public void deleteMessage(String Id, String nodeName) throws XMPPException {
+		LeafNode node = mgr.getNode(nodeName);
+		node.deleteItem(Id);
+		System.out.println("Item wurde gelšscht");
 		System.out.println("");
 		
 	}
@@ -120,6 +128,29 @@ public class PubSub {
 		LeafNode node = (LeafNode) mgr.getNode(nodeName);
 		System.out.println(node.getItems(node.getSubscriptions().get(0).getId()).get(Id));
 
+	}
+	
+	public void printAllMessagesFromNode(String nodeName) throws XMPPException{
+		
+		LeafNode node = (LeafNode) mgr.getNode(nodeName);
+		System.out.println("Alle Messages von "+nodeName+":");
+		for(int i=0;i<node.getItems().size();i++){
+			
+			System.out.println(node.getItems(node.getSubscriptions().get(0).getId()).get(i));
+		
+		}
+		System.out.println("");
+
+	}
+
+	public void addPayloadMessage(String Id, String nodeName, String titel, String datum, String uhr, int preis) throws XMPPException {
+		
+		LeafNode node = (LeafNode) mgr.getNode(nodeName);
+		SimplePayload payload = new SimplePayload("Schnaeppchen", null, "<schnaeppchen><item><push kategorie=\"" + nodeName + "\" titel=\"" + titel + "\" datum=\"" + datum + "\" uhr=\"" + uhr + "\" preis=\"" + preis + "\"></push></item></schnaeppchen>");
+		PayloadItem<SimplePayload> item = new PayloadItem<SimplePayload>(Id, payload);
+		node.publish(item);
+		System.out.println("Item wurde erzeugt");
+		
 	}
 	
 	public List<String> getNodes() throws XMPPException{
@@ -138,16 +169,6 @@ public class PubSub {
 		System.out.println("");
 		
 		return list;
-		
-	}
-	
-	public void addPayloadMessage(String Id, String nodeName, String titel, String datum, String uhr, int preis) throws XMPPException {
-		
-		LeafNode node = (LeafNode) mgr.getNode(nodeName);
-		SimplePayload payload = new SimplePayload("Schnaeppchen", null, "<schnaeppchen><item><push kategorie=\"" + nodeName + "\" titel=\"" + titel + "\" datum=\"" + datum + "\" uhr=\"" + uhr + "\" preis=\"" + preis + "\"></push></item></schnaeppchen>");
-		PayloadItem<SimplePayload> item = new PayloadItem<SimplePayload>(Id, payload);
-		node.publish(item);
-		System.out.println("Item wurde erzeugt.");
 		
 	}
 

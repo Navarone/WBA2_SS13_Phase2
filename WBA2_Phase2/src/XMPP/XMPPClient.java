@@ -29,8 +29,9 @@ public class XMPPClient {
 		
 		//ps.addPayloadMessage("1", "TestKnotenSPL", "Fernseher", "12.11.2004", "14:44", 499 );
 		//ps.addMessage("1", "test");
-		ps.printMessage("TestKnotenSPL", 0);
-		
+		//ps.printMessage("TestKnotenSPL", 0);
+		//ps.deleteMessage("1", "TestKnotenSPL");
+		ps.printAllMessagesFromNode("TestKnotenSPL");
 		
 		
 		ps.disconnect();

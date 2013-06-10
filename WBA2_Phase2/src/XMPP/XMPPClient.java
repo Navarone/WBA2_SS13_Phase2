@@ -16,20 +16,20 @@ public class XMPPClient {
 		
 		ps.connect(host, port, user, pass);
 		
-		//ps.createNode("test", false);
+		//ps.createNode("test2", false);
 		//ps.deleteNode("Elektronik");
 		
-		//ps.getNodes();
+		ps.getNodes();
 		
-		//ps.subscribe("test");
+		//ps.subscribe("test2");
 		//ps.unsubscribe("Elektronik");
 		
 		//ps.getAllSubscriptions();
-		//ps.getSubscriptionFromNode("test");
+		ps.getSubscriptionFromNode("test2");
 		
-		//ps.addPayloadMessage("1", "TestKnotenSPL", "Fernseher", "12.11.2004", "14:44", 499 );
+		//ps.addPayloadMessage("1", "test2", "Fernseher", "12.11.2004", "14:44", 499 );
 		//ps.addMessage("1", "test");
-		//ps.printMessage("TestKnotenSPL", 0);
+		//ps.printMessage("", 0);
 		//ps.deleteMessage("1", "TestKnotenSPL");
 		ps.printAllMessagesFromNode("TestKnotenSPL");
 		

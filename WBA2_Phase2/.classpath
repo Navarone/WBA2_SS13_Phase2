@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/Users/FlorianWolf/Downloads/smack_3_3_0/smackx-debug.jar"/>
 	<classpathentry kind="lib" path="/Users/FlorianWolf/Downloads/smack_3_3_0/smackx-jingle.jar"/>
 	<classpathentry kind="lib" path="/Users/FlorianWolf/Downloads/smack_3_3_0/smackx.jar"/>
+	<classpathentry kind="lib" path="/Users/FlorianWolf/Downloads/swing-layout-1.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

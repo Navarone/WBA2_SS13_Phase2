@@ -45,9 +45,13 @@ public class RestService
 	   Schnaeppchenxyz rt = ob.createSchnaeppchenxyz();
 	   if(x!=null){
 		   for(int i=0; i<schnaeppchen.getSchnaeppchen().size(); i++){
-			   if(schnaeppchen.getSchnaeppchen().get(i).getKategorie().equalsIgnoreCase(x)){
-				   rt.getSchnaeppchen().add(schnaeppchen.getSchnaeppchen().get(i));
+			   if(x!=null){
+				   if(schnaeppchen.getSchnaeppchen().get(i).getKategorie().equalsIgnoreCase(x)){
+					   rt.getSchnaeppchen().add(schnaeppchen.getSchnaeppchen().get(i));
+				   }
 			   }
+			   else
+				   rt.getSchnaeppchen().add(schnaeppchen.getSchnaeppchen().get(i));
 		   }
 		   return rt;
 	   }
@@ -69,19 +73,13 @@ public class RestService
 												@FormParam("UVP")String uvp,
 												@FormParam("Text")String text,
 												@FormParam("Tag")String tag,
-												@FormParam("Uhrzeit")String uhrzeit,
-												@FormParam("KAutor")String kautor,
-												@FormParam("KTag")String ktag,
-												@FormParam("KUhrzeit")String kuhrzeit,
-												@FormParam("KText")String ktext
+												@FormParam("Uhrzeit")String uhrzeit
 											)throws JAXBException, IOException{
 		
 	   Schnaeppchenxyz schnaeppchen = new Schnaeppchenxyz();
 	   Schnaeppchen s = new Schnaeppchen();
 	   Preise p = new Preise();
 	   Datum d = new Datum();
-	   Kommentare ke = new Kommentare();
-	   Kommentar k = new Kommentar();
 		
 	   s.setID(id);
 	   s.setTitel(titel);
@@ -97,12 +95,6 @@ public class RestService
 	   d.setTag(tag);
 	   d.setUhrzeit(uhrzeit);
 	   s.setDatum(d);
-	   k.setAutor(kautor);
-	   k.setDatum(ktag);
-	   k.setUhrzeit(kuhrzeit);
-	   k.setText(ktext);
-	   ke.getKommentar().add(k);
-	   s.setKommentare(ke);
 		
 	   schnaeppchen.ObjectFactory ob = new schnaeppchen.ObjectFactory();
 	   schnaeppchen = ob.createSchnaeppchenxyz();

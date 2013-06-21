@@ -1,5 +1,19 @@
 package GUI;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.io.FileNotFoundException;
+import java.util.EventListener;
+
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.xml.bind.JAXBException;
+
+import org.jivesoftware.smack.XMPPException;
+
+import REST.RestService;
 import XMPP.PubSub;
 
 /**
@@ -13,6 +27,8 @@ public class MainGUI extends javax.swing.JFrame {
      */
     public MainGUI() {
         initComponents();
+        setSchnaeppchenListe();
+        setSchnaeppchenBeschreibung();
     }
 
     /**
@@ -42,29 +58,34 @@ public class MainGUI extends javax.swing.JFrame {
         schnaeppchenListeScrollPane.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         schnaeppchenListe.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Schnäppchen 1", "Schnäppchen 2", " " };
+            String[] strings = { "Schnaeppchen 1", "Schnaeppchen 2", " " };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
         schnaeppchenListeScrollPane.setViewportView(schnaeppchenListe);
 
-        kategorienListe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle Kategorien", "Elektronik", "Reisen", "Küche", "Haushalt", "Transportmittel", "Spielzeug", "Kleidung", "Freizeit", "Bücher", "Diverse", " " }));
+        kategorienListe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle Kategorien", "Elektronik", "Reisen", "Kueche", "Haushalt", "Transportmittel", "Spielzeug", "Kleidung", "Freizeit", "Buecher", "Diverse", " " }));
 
-        benutzerLabel.setText("Benutzer");
+        benutzerLabel.setText(ps.benutzer);
 
         schnaeppchenBeschreibung.setColumns(20);
         schnaeppchenBeschreibung.setRows(5);
-        schnaeppchenBeschreibung.setText("Schnäppchen 1 Beschreibung");
+        schnaeppchenBeschreibung.setText("Willkommen\nBitte Schnaeppchen auswaehlen");
         schnaeppchenScrollPane.setViewportView(schnaeppchenBeschreibung);
 
         abonnementsButton.setText("Abonnements");
         abonnementsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                abonnementsButtonActionPerformed(evt);
+                try {
+					abonnementsButtonActionPerformed(evt);
+				} catch (XMPPException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
-        neuesSchnaeppchenButton.setText("Neues Schnäppchen");
+        neuesSchnaeppchenButton.setText("Neues Schnaeppchen");
         neuesSchnaeppchenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 neuesSchnaeppchenButtonActionPerformed(evt);
@@ -74,7 +95,13 @@ public class MainGUI extends javax.swing.JFrame {
         kommentarText.setText("Kommentar");
 
         kommentarButton.setText("Abschicken");
-
+        kommentarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kommentarButtonActionPerformed(evt);
+            }
+        });
+        
+        
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,13 +172,16 @@ public class MainGUI extends javax.swing.JFrame {
         NeuesSchnaeppchen dialog = new NeuesSchnaeppchen(null, true);
         dialog.setPubSub(ps);
         dialog.setVisible(true);
+        setSchnaeppchenListe();
+
         
     }//GEN-LAST:event_neuesSchnaeppchenButtonActionPerformed
 
-    private void abonnementsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abonnementsButtonActionPerformed
+    private void abonnementsButtonActionPerformed(java.awt.event.ActionEvent evt) throws XMPPException {//GEN-FIRST:event_abonnementsButtonActionPerformed
 
         Abos dialog = new Abos(null, true);
         dialog.setPubSub(ps);
+        dialog.checkSubscriptions();
         dialog.setVisible(true);
         
     }//GEN-LAST:event_abonnementsButtonActionPerformed
@@ -164,12 +194,139 @@ public class MainGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    private void kommentarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+
+    	int i = schnaeppchenListe.getSelectedIndex();
+ 		System.out.println(i);
+        
+    }//GEN-LAST:event_logoutButtonActionPerformed
+    
 	public void setPubSub(PubSub ps){
 	    	
 	    this.ps=ps;
 	    	
 	}
-    
+	
+	
+	public void setSchnaeppchenListe(){
+		list.removeAllElements();
+		if(kategorienListe.getSelectedItem().toString().equals("Alle Kategorien")){
+			try {
+				for(int j = 0; j<rest.getAllSchnaeppchen(null).getSchnaeppchen().size();j++){
+						list.addElement(rest.getAllSchnaeppchen(null).getSchnaeppchen().get(j).getTitel());
+				}
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (JAXBException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		
+		kategorienListe.addItemListener(new ItemListener(){
+		
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				//schnaeppchenListe.clearSelection();
+				check=false;
+				list.removeAllElements();
+				if(kategorienListe.getSelectedItem().toString().equals("Alle Kategorien")){
+					try {
+						for(int j = 0; j<rest.getAllSchnaeppchen(null).getSchnaeppchen().size();j++){
+								list.addElement(rest.getAllSchnaeppchen(null).getSchnaeppchen().get(j).getTitel());
+						}
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (JAXBException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				else{
+					try {
+						for(int j = 0; j<rest.getAllSchnaeppchen(kategorienListe.getSelectedItem().toString()).getSchnaeppchen().size();j++){
+							list.addElement(rest.getAllSchnaeppchen(kategorienListe.getSelectedItem().toString()).getSchnaeppchen().get(j).getTitel());
+						}
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (JAXBException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				check=true;
+			}
+			
+		
+		});
+		
+ 		schnaeppchenListe.setModel(list);
+	}
+	
+	public void setSchnaeppchenBeschreibung() {
+		
+ 		ListSelectionListener listen = new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				// TODO Auto-generated method stub
+				if(check==true){
+					boolean adjust = e.getValueIsAdjusting();
+					int i = schnaeppchenListe.getSelectedIndex();
+					
+					if(kategorienListe.getSelectedItem().toString().equals("Alle Kategorien")){
+						try {
+							i=rest.getAllSchnaeppchen(null).getSchnaeppchen().get(i).getID();
+							
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (JAXBException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					else{
+						try {
+							i=rest.getAllSchnaeppchen(kategorienListe.getSelectedItem().toString()).getSchnaeppchen().get(i).getID();
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (JAXBException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+					
+			 		if(!adjust){
+			 			System.out.println(i);
+						try {
+							schnaeppchenBeschreibung.setText("Titel: "+rest.getOneSchnaeppchen(i).getSchnaeppchen().get(0).getTitel()+"\n"
+															+"Benutzer: "+rest.getOneSchnaeppchen(i).getSchnaeppchen().get(0).getBenutzer()
+																	);
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (JAXBException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			 		}
+			 		
+				}
+			}
+ 			
+ 		};
+ 		schnaeppchenListe.setSelectionMode(0);
+ 		schnaeppchenListe.addListSelectionListener(listen);
+ 		
+ 		
+	}
+
+	
     /**
      * @param args the command line arguments
      */
@@ -217,6 +374,10 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane schnaeppchenListeScrollPane;
     private javax.swing.JScrollPane schnaeppchenScrollPane;
     
+    private Boolean check=true;;
+    DefaultListModel list = new DefaultListModel();
     private PubSub ps;
+    private String benutzer;
+    private RestService rest = new RestService();
     // End of variables declaration//GEN-END:variables
 }

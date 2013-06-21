@@ -1,5 +1,7 @@
 package GUI;
 
+import org.jivesoftware.smack.XMPPException;
+
 import XMPP.PubSub;
 
 
@@ -15,6 +17,8 @@ public class Abos extends javax.swing.JDialog {
     public Abos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        zurueckButton.setVisible(false);
+        
     }
 
     /**
@@ -43,7 +47,13 @@ public class Abos extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         elektronikBox.setText("Elektronik");
-
+        elektronikBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elektronikBoxActionPerformed(evt);
+            }
+        });
+        
+        
         reisenBox.setText("Reisen");
         reisenBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,7 +61,7 @@ public class Abos extends javax.swing.JDialog {
             }
         });
 
-        kuecheBox.setText("Küche");
+        kuecheBox.setText("Kueche");
 
         haushaltBox.setText("Haushalt");
 
@@ -63,11 +73,11 @@ public class Abos extends javax.swing.JDialog {
 
         freizeitBox.setText("Freizeit");
 
-        buecherBox.setText("Bücher");
+        buecherBox.setText("Buecher");
 
         diverseBox.setText("Diverse");
 
-        okButton.setText("Bestätigen");
+        okButton.setText("Bestaetigen");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
@@ -76,7 +86,7 @@ public class Abos extends javax.swing.JDialog {
 
         ueberschriftLabel.setText("Abonnements verwalten");
 
-        zurueckButton.setText("Zurück");
+        zurueckButton.setText("Zurueck");
         zurueckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zurueckButtonActionPerformed(evt);
@@ -152,9 +162,20 @@ public class Abos extends javax.swing.JDialog {
     private void reisenBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reisenBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_reisenBoxActionPerformed
+    
+    private void elektronikBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reisenBoxActionPerformed
+        // TODO add your handling code here:
+    		
+    }//GEN-LAST:event_reisenBoxActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
+    	try {
+			changeSubscriptions();
+		} catch (XMPPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void zurueckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zurueckButtonActionPerformed
@@ -165,6 +186,132 @@ public class Abos extends javax.swing.JDialog {
 	    	
 	    	this.ps=ps;
 	    	
+	}
+	
+	public void checkSubscriptions() throws XMPPException{
+		if(ps.isSubscriberof("Elektronik"))
+			elektronikBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Reisen"))
+			reisenBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Kueche"))
+			kuecheBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Haushalt"))
+			haushaltBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Transportmittel"))
+			transportBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Spielzeug"))
+			spielzeugBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Kleidung"))
+			kleidungBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Freizeit"))
+			freizeitBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Buecher"))
+			buecherBox.setSelected(true);
+		
+		if(ps.isSubscriberof("Diverse"))
+			diverseBox.setSelected(true);
+			
+	}
+	
+	public void changeSubscriptions() throws XMPPException{
+		if(elektronikBox.isSelected()==true&&ps.isSubscriberof("Elektronik")==false){
+			ps.subscribe("Elektronik");
+			
+		}
+		if(elektronikBox.isSelected()==false&&ps.isSubscriberof("Elektronik")==true){
+			ps.unsubscribe("Elektronik");
+			
+		}
+		
+		if(reisenBox.isSelected()==true&&ps.isSubscriberof("Reisen")==false){
+			ps.subscribe("Reisen");
+			
+		}
+		if(reisenBox.isSelected()==false&&ps.isSubscriberof("Reisen")==true){
+			ps.unsubscribe("Reisen");
+			
+		}
+		
+		if(kuecheBox.isSelected()==true&&ps.isSubscriberof("Kueche")==false){
+			ps.subscribe("Kueche");
+			
+		}
+		if(kuecheBox.isSelected()==false&&ps.isSubscriberof("Kueche")==true){
+			ps.unsubscribe("Kueche");
+			
+		}
+		
+		if(haushaltBox.isSelected()==true&&ps.isSubscriberof("Haushalt")==false){
+			ps.subscribe("Haushalt");
+			
+		}
+		if(haushaltBox.isSelected()==false&&ps.isSubscriberof("Haushalt")==true){
+			ps.unsubscribe("Haushalt");
+			
+		}
+		
+		if(transportBox.isSelected()==true&&ps.isSubscriberof("Transportmittel")==false){
+			ps.subscribe("Transportmittel");
+			
+		}
+		if(transportBox.isSelected()==false&&ps.isSubscriberof("Transportmittel")==true){
+			ps.unsubscribe("Transportmittel");
+			
+		}
+		
+		if(spielzeugBox.isSelected()==true&&ps.isSubscriberof("Spielzeug")==false){
+			ps.subscribe("Spielzeug");
+			
+		}
+		if(spielzeugBox.isSelected()==false&&ps.isSubscriberof("Spielzeug")==true){
+			ps.unsubscribe("Spielzeug");
+			
+		}
+		
+		if(kleidungBox.isSelected()==true&&ps.isSubscriberof("Kleidung")==false){
+			ps.subscribe("Kleidung");
+			
+		}
+		if(kleidungBox.isSelected()==false&&ps.isSubscriberof("Kleidung")==true){
+			ps.unsubscribe("Kleidung");
+			
+		}
+		
+		if(freizeitBox.isSelected()==true&&ps.isSubscriberof("Freizeit")==false){
+			ps.subscribe("Freizeit");
+			
+		}
+		if(freizeitBox.isSelected()==false&&ps.isSubscriberof("Freizeit")==true){
+			ps.unsubscribe("Freizeit");
+			
+		}
+		
+		if(buecherBox.isSelected()==true&&ps.isSubscriberof("Buecher")==false){
+			ps.subscribe("Buecher");
+			
+		}
+		if(buecherBox.isSelected()==false&&ps.isSubscriberof("Buecher")==true){
+			ps.unsubscribe("Buecher");
+			
+		}
+		
+		if(diverseBox.isSelected()==true&&ps.isSubscriberof("Diverse")==false){
+			ps.subscribe("Diverse");
+			
+		}
+		if(diverseBox.isSelected()==false&&ps.isSubscriberof("Diverse")==true){
+			ps.unsubscribe("Diverse");
+			
+		}
+		
 	}
     
     

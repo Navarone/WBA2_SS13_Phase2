@@ -1,5 +1,12 @@
 package GUI;
 
+import java.io.IOException;
+
+import javax.xml.bind.JAXBException;
+
+import org.jivesoftware.smack.XMPPException;
+
+import REST.RestService;
 import XMPP.PubSub;
 
 
@@ -15,6 +22,8 @@ public class NeuesSchnaeppchen extends javax.swing.JDialog {
     public NeuesSchnaeppchen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        uvpWaehrungComboBox.setVisible(false);
+        zurueckButton.setVisible(false);
     }
 
     /**
@@ -62,7 +71,7 @@ public class NeuesSchnaeppchen extends javax.swing.JDialog {
 
         bildLabel.setText("Bild");
 
-        kategorieComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elektronik", "Reisen", "Küche", "Haushalt", "Transportmittel", "Spielzeug", "Kleidung", "Freizeit", "Bücher", "Diverse", " " }));
+        kategorieComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elektronik", "Reisen", "Kueche", "Haushalt", "Transportmittel", "Spielzeug", "Kleidung", "Freizeit", "Buecher", "Diverse", " " }));
         kategorieComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kategorieComboBoxActionPerformed(evt);
@@ -107,19 +116,27 @@ public class NeuesSchnaeppchen extends javax.swing.JDialog {
 
         textLabel.setText("Text");
 
-        okButton.setText("Bestätigen");
+        okButton.setText("Bestaetigen");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
+                try {
+					okButtonActionPerformed(evt);
+				} catch (JAXBException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
-        ueberschriftLabel.setText("Schnäppchen Erstellen");
+        ueberschriftLabel.setText("Schnaeppchen Erstellen");
 
-        zurueckButton.setText("Zurück");
+        zurueckButton.setText("Zurueck");
         zurueckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                zurueckButtonActionPerformed(evt);
+					zurueckButtonActionPerformed(evt);
             }
         });
 
@@ -249,8 +266,33 @@ public class NeuesSchnaeppchen extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_textTextFieldActionPerformed
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) throws JAXBException, IOException {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
+    	RestService rest = new RestService();
+    	int id = rest.getAllSchnaeppchen(null).getSchnaeppchen().size();
+    	String titel = titelTextField.getText();
+    	int benutzerid;
+		if(ps.benutzer.equals("user1"))
+    		benutzerid = 1;
+    	else
+    		benutzerid = 2;
+    	
+    	String kategorie = kategorieComboBox.getSelectedItem().toString();
+    	String URL = urlTextField.getText();
+    	int markt = 2;
+    	String preis = preisTextField.getText();
+    	String preiswaehrung = preisWaehrungComboBox.getSelectedItem().toString();
+    	String uvp = uvpTextField.getText();
+    	String text = textTextField.getText();
+    	String datum = "24.11.2010";
+    	String uhr = "11:12";
+    	rest.createSchnaeppchen(id, titel, benutzerid, kategorie, URL, markt, preis, preiswaehrung,uvp , text, datum, uhr);
+    	try {
+			ps.addPayloadMessage(Integer.toString(id), kategorie, titel, datum, uhr, preis);
+		} catch (XMPPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void zurueckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zurueckButtonActionPerformed
@@ -263,6 +305,8 @@ public class NeuesSchnaeppchen extends javax.swing.JDialog {
     	this.ps=ps;
     	
     }
+    
+
     
     /**
      * @param args the command line arguments

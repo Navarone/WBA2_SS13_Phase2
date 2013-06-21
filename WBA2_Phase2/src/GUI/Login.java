@@ -13,7 +13,7 @@ import XMPP.PubSub;
  */
 public class Login extends javax.swing.JFrame {
 
-	private static String user,pass;
+	private static String pass,user;
 	private static String host="localhost";
 	private static int port = 5222;
 	
@@ -83,7 +83,7 @@ public class Login extends javax.swing.JFrame {
 
     	user=jTextField1.getText();
     	pass=jPasswordField1.getText();
-		
+    	ps.setBenutzer(user);
 		try {
 			ps.connect(host, port, user, pass);
 		} catch (XMPPException e) {
@@ -97,6 +97,8 @@ public class Login extends javax.swing.JFrame {
 		
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */

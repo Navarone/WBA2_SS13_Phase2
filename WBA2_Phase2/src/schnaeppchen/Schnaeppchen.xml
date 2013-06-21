@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
 <Schnaeppchenxyz xmlns="http://www.example.org/Schnaeppchen">
     <Schnaeppchen>
-        <ID>1</ID>
+        <ID>0</ID>
         <Titel>Fernseher</Titel>
         <Benutzer>3</Benutzer>
         <Kategorie>Kategorie2</Kategorie>
@@ -27,7 +27,7 @@
         </Kommentare>
     </Schnaeppchen>
     <Schnaeppchen>
-        <ID>2</ID>
+        <ID>1</ID>
         <Titel>Acer Laptop</Titel>
         <Benutzer>2</Benutzer>
         <Kategorie>Elektronik</Kategorie>
@@ -53,7 +53,7 @@
         </Kommentare>
     </Schnaeppchen>
     <Schnaeppchen>
-        <ID>23</ID>
+        <ID>2</ID>
         <Titel>Test</Titel>
         <Benutzer>2</Benutzer>
         <Kategorie>Elektronik</Kategorie>
@@ -76,5 +76,56 @@
                 <Text>Super duper</Text>
             </Kommentar>
         </Kommentare>
+    </Schnaeppchen>
+    <Schnaeppchen>
+        <ID>3</ID>
+        <Titel>App</Titel>
+        <Benutzer>3</Benutzer>
+        <Kategorie>Elektronik</Kategorie>
+        <Bild>www.de.de</Bild>
+        <Markt>2</Markt>
+        <Preise Waehrung="Euro">
+            <Preis>433</Preis>
+            <UVP>456</UVP>
+        </Preise>
+        <Text>egrg</Text>
+        <Datum>
+            <Tag>24.11.2010</Tag>
+            <Uhrzeit>11:12</Uhrzeit>
+        </Datum>
+    </Schnaeppchen>
+    <Schnaeppchen>
+        <ID>4</ID>
+        <Titel>Holland</Titel>
+        <Benutzer>1</Benutzer>
+        <Kategorie>Reisen</Kategorie>
+        <Bild>www.de.de</Bild>
+        <Markt>2</Markt>
+        <Preise Waehrung="Euro">
+            <Preis>123</Preis>
+            <UVP>321</UVP>
+        </Preise>
+        <Text>supi</Text>
+        <Datum>
+            <Tag>24.11.2010</Tag>
+            <Uhrzeit>11:12</Uhrzeit>
+        </Datum>
+    </Schnaeppchen>
+    <Schnaeppchen>
+        <ID>5</ID>
+        <Titel>funzt</Titel>
+        <Benutzer>1</Benutzer>
+        <Kategorie>Diverse</Kategorie>
+        <Bild>www.funzt.de</Bild>
+        <Markt>2</Markt>
+        <Preise Waehrung="Euro">
+            <Preis>123</Preis>
+            <UVP>321</UVP>
+        </Preise>
+        <Text>hallo</Text>
+        <Datum>
+            <Tag>24.11.2010</Tag>
+            <Uhrzeit>11:12</Uhrzeit>
+        </Datum>
     </Schnaeppchen>
 </Schnaeppchenxyz>

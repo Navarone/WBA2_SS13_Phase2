@@ -9,12 +9,14 @@ import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.ConnectionConfiguration.SecurityMode;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smackx.ServiceDiscoveryManager;
 import org.jivesoftware.smackx.packet.DiscoverItems;
 import org.jivesoftware.smackx.pubsub.AccessModel;
 import org.jivesoftware.smackx.pubsub.ConfigureForm;
 import org.jivesoftware.smackx.pubsub.FormType;
 import org.jivesoftware.smackx.pubsub.Item;
+import org.jivesoftware.smackx.pubsub.ItemPublishEvent;
 import org.jivesoftware.smackx.pubsub.LeafNode;
 import org.jivesoftware.smackx.pubsub.PayloadItem;
 import org.jivesoftware.smackx.pubsub.PubSubManager;
@@ -26,6 +28,7 @@ public class PubSub {
 	
 	private XMPPConnection connection;
 	private PubSubManager mgr;
+	public static String benutzer;
 	
 	public void connect(String host, int port, String user, String pass) throws XMPPException{
 		
@@ -48,6 +51,14 @@ public class PubSub {
 		connection.disconnect();
 		System.out.println("Verbindung geschlossen");
 		
+	}
+	
+	public void setBenutzer(String benutzer){
+		this.benutzer=benutzer;
+	}
+	
+	public String getBenutzer(){
+		return benutzer;
 	}
 	
 	public void createNode(String node, Boolean payload) throws XMPPException{
@@ -98,6 +109,18 @@ public class PubSub {
 		
 	}
 	
+	public Boolean isSubscriberof(String nodeName) throws XMPPException{
+		LeafNode node = mgr.getNode(nodeName);
+		for(int i = 0; i<node.getSubscriptions().size(); i++){
+			if(node.getSubscriptions().get(i).getJid().equals(connection.getUser())){
+				System.out.println(connection.getUser()+" ist abonnent von: "+nodeName);
+				return true;
+			}
+		}
+		System.out.println(connection.getUser()+" ist kein abonnent von: "+nodeName);
+		return false;
+	}
+	
 	public void getSubscriptionFromNode(String nodeName) throws XMPPException{
 		
 		LeafNode node = mgr.getNode(nodeName);
@@ -130,11 +153,18 @@ public class PubSub {
 
 	}
 	
+	
+	public int getMessageSize(String nodeName) throws XMPPException{
+		LeafNode node = (LeafNode) mgr.getNode(nodeName);
+		return node.getItems().size();
+	}
+	
+
 	public void printAllMessagesFromNode(String nodeName) throws XMPPException{
 		
 		LeafNode node = (LeafNode) mgr.getNode(nodeName);
 		System.out.println("Alle Messages von "+nodeName+":");
-		for(int i=0;i<node.getItems().size();i++){
+		for(int i=0;i<node.getItems(node.getSubscriptions().get(0).getId()).size();i++){
 			
 			System.out.println(node.getItems(node.getSubscriptions().get(0).getId()).get(i));
 		
@@ -143,7 +173,7 @@ public class PubSub {
 
 	}
 
-	public void addPayloadMessage(String Id, String nodeName, String titel, String datum, String uhr, int preis) throws XMPPException {
+	public void addPayloadMessage(String Id, String nodeName, String titel, String datum, String uhr, String preis) throws XMPPException {
 		
 		LeafNode node = (LeafNode) mgr.getNode(nodeName);
 		SimplePayload payload = new SimplePayload("Schnaeppchen", null, "<schnaeppchen><item><push kategorie=\"" + nodeName + "\" titel=\"" + titel + "\" datum=\"" + datum + "\" uhr=\"" + uhr + "\" preis=\"" + preis + "\"></push></item></schnaeppchen>");

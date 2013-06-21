@@ -14,11 +14,17 @@
             <PLZ>51702</PLZ>
             <Ort>Bergneustadt</Ort>
         </Adresse>
-        <AnzahlSchnaeppchen>3</AnzahlSchnaeppchen>
+        <AnzahlSchnaeppchen>9</AnzahlSchnaeppchen>
         <GemeldeteSchnaeppchen>
             <Schnaeppchen>2</Schnaeppchen>
             <Schnaeppchen>5</Schnaeppchen>
             <Schnaeppchen>23</Schnaeppchen>
+            <Schnaeppchen>4</Schnaeppchen>
+            <Schnaeppchen>5</Schnaeppchen>
+            <Schnaeppchen>6</Schnaeppchen>
+            <Schnaeppchen>7</Schnaeppchen>
+            <Schnaeppchen>4</Schnaeppchen>
+            <Schnaeppchen>5</Schnaeppchen>
         </GemeldeteSchnaeppchen>
         <Bewertung>Neuling</Bewertung>
     </Benutzer>
@@ -36,11 +42,15 @@
             <PLZ>51702</PLZ>
             <Ort>Bergneustadt</Ort>
         </Adresse>
-        <AnzahlSchnaeppchen>3</AnzahlSchnaeppchen>
+        <AnzahlSchnaeppchen>7</AnzahlSchnaeppchen>
         <GemeldeteSchnaeppchen>
             <Schnaeppchen>1</Schnaeppchen>
             <Schnaeppchen>35</Schnaeppchen>
             <Schnaeppchen>56</Schnaeppchen>
+            <Schnaeppchen>20</Schnaeppchen>
+            <Schnaeppchen>20</Schnaeppchen>
+            <Schnaeppchen>23</Schnaeppchen>
+            <Schnaeppchen>23</Schnaeppchen>
         </GemeldeteSchnaeppchen>
         <Bewertung>Sehr Gut</Bewertung>
     </Benutzer>

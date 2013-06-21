@@ -19,20 +19,35 @@ public class XMPPClient {
 		//ps.createNode("test2", false);
 		//ps.deleteNode("Elektronik");
 		
-		ps.getNodes();
+		//ps.getNodes();
 		
-		//ps.subscribe("test2");
+		//ps.subscribe("Elektronik");
+		//ps.getSubscriptionFromNode("Elektronik");
+		//ps.isSubscriberof("Elektronik");
+		
+		//ps.subscribe("Elektronik");
 		//ps.unsubscribe("Elektronik");
 		
 		//ps.getAllSubscriptions();
-		ps.getSubscriptionFromNode("test2");
+		//ps.getSubscriptionFromNode("test2");
 		
-		//ps.addPayloadMessage("1", "test2", "Fernseher", "12.11.2004", "14:44", 499 );
+		//ps.addPayloadMessage("0", "Elektronik", "Fernseher", "12.11.2004", "14:44", "499" );
 		//ps.addMessage("1", "test");
-		//ps.printMessage("", 0);
+		//ps.printMessage("Elektronik", 2);
 		//ps.deleteMessage("1", "TestKnotenSPL");
-		ps.printAllMessagesFromNode("TestKnotenSPL");
+		//ps.printAllMessagesFromNode("Elektronik");
+		//ps.deleteNode("Elektronik");
 		
+		//ps.createNode("Elektronik", true);
+		//ps.createNode("Reisen", true);
+		//ps.createNode("Kueche", true);
+		//ps.createNode("Haushalt", true);
+		//ps.createNode("Transportmittel", true);
+		//ps.createNode("Spielzeug", true);
+		//ps.createNode("Kleidung", true);
+		//ps.createNode("Freizeit", true);
+		//ps.createNode("Buecher", true);
+		//ps.createNode("Diverse", true);
 		
 		ps.disconnect();
         
